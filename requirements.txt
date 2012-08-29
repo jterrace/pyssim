@@ -1,0 +1,5 @@
+pillow
+matplotlib
+numpy
+scipy
+argparse
