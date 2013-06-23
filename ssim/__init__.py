@@ -83,8 +83,8 @@ def compute_ssim(im1, im2, gaussian_kernel_sigma=1.5, gaussian_kernel_width=11):
     img_mat_sigma_12 = convolve_gaussian_2d(img_mat_12, gaussian_kernel_1d)
     
     #Centered squares of variances
-    img_mat_sigma_1_sq = img_mat_sigma_1_sq - img_mat_mu_1_sq
-    img_mat_sigma_2_sq = img_mat_sigma_2_sq - img_mat_mu_2_sq
+    img_mat_sigma_1_sq -= img_mat_mu_1_sq
+    img_mat_sigma_2_sq -= img_mat_mu_2_sq
     img_mat_sigma_12 = img_mat_sigma_12 - img_mat_mu_12
     
     #set k1,k2 & c1,c2 to depend on L (width of color map)
