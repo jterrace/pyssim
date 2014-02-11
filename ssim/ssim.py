@@ -56,11 +56,18 @@ def main():
     gaussian_kernel_sigma=1.5
     gaussian_kernel_width=11
     gaussian_kernel_1d = get_gaussian_kernel(gaussian_kernel_width, gaussian_kernel_sigma)
+    
+    comparison_images = glob.glob(args.comparison_images)
+    is_a_single_image = len(comparison_images) == 1
 
-    for comparison_image in glob.glob(args.comparison_images):
+    for comparison_image in comparison_images:
         try:
             ssim_value = SSIM(args.base_image, gaussian_kernel_1d).ssim_value(comparison_image)
-            print "%s - %s: %s" % (args.base_image, comparison_image, ssim_value)
+            if is_a_single_image:
+                print ssim_value
+            else:
+                print "%s - %s: %s" % (args.base_image, comparison_image, ssim_value)
+
         except Exception, e:
             print e
 if __name__ == '__main__':
