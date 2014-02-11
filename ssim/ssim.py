@@ -6,6 +6,7 @@ import scipy.ndimage
 from numpy.ma.core import exp, sqrt
 from scipy.constants.constants import pi
 from utils import to_grayscale, convolve_gaussian_2d, get_gaussian_kernel
+from argparse import RawTextHelpFormatter
 
 class SSIMImage(object):
     def __init__(self, img, gaussian_kernel_1d, size = None):
@@ -48,10 +49,13 @@ class SSIM(object):
         return index
 
 def main():
-    parser = argparse.ArgumentParser(prog="pyssim",
-                                     description="Compares an image with a list of images using the SSIM metric")
+    description = "\n".join([ "Compares an image with a list of images using the SSIM metric",
+                            " example:", '  pyssim test-images/test1-1.png "test-images/*"'])
+    
+    parser = argparse.ArgumentParser(prog="pyssim", formatter_class=RawTextHelpFormatter,
+                                     description=description)
     parser.add_argument('base_image', metavar='image1.png', type=argparse.FileType('r'))
-    parser.add_argument('comparison_images', metavar='image path with* / image2')
+    parser.add_argument('comparison_images', metavar='image path with* or image2.png')
     args = parser.parse_args()
     gaussian_kernel_sigma=1.5
     gaussian_kernel_width=11
