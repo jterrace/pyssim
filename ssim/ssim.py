@@ -50,7 +50,7 @@ class SSIM(object):
 def main():
     parser = argparse.ArgumentParser(prog="pyssim",
                                      description="Compares an image with a list of images using the SSIM metric")
-    parser.add_argument('base_image', metavar='image1.png')#, type=argparse.FileType('r'))
+    parser.add_argument('base_image', metavar='image1.png', type=argparse.FileType('r'))
     parser.add_argument('comparison_images', metavar='image path with* / image2')
     args = parser.parse_args()
     gaussian_kernel_sigma=1.5
@@ -62,11 +62,11 @@ def main():
 
     for comparison_image in comparison_images:
         try:
-            ssim_value = SSIM(args.base_image, gaussian_kernel_1d).ssim_value(comparison_image)
+            ssim_value = SSIM(args.base_image.name, gaussian_kernel_1d).ssim_value(comparison_image)
             if is_a_single_image:
                 print ssim_value
             else:
-                print "%s - %s: %s" % (args.base_image, comparison_image, ssim_value)
+                print "%s - %s: %s" % (args.base_image.name, comparison_image, ssim_value)
 
         except Exception, e:
             print e
