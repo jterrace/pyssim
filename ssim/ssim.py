@@ -11,7 +11,10 @@ from argparse import RawTextHelpFormatter
 class SSIMImage(object):
     def __init__(self, img, gaussian_kernel_1d, size = None):
         self.gaussian_kernel_1d = gaussian_kernel_1d
-        self.img = Image.open(img)
+        if isinstance(img, basestring):
+            self.img = Image.open(img)
+        else:
+            self.img = img
         if size:
             self.img = self.img.resize(size)
         self.size = self.img.size
