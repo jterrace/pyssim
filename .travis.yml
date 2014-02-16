@@ -16,7 +16,8 @@ install:
   - pip install pylint
   - python setup.py install
 
-script: pyssim test-images/test1-1.png test-images/test1-2.png
-script: pyssim test-images/test1-1.png "test-images/*"
-script: pylint --rcfile=.pylintrc setup.py
-script: pylint --rcfile=.pylintrc ssim
+script:
+ - pyssim test-images/test1-1.png test-images/test1-2.png
+ - pyssim test-images/test1-1.png "test-images/*"
+ - pylint --rcfile=.pylintrc setup.py
+ - pylint --rcfile=.pylintrc ssim
