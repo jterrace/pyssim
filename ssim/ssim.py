@@ -9,6 +9,21 @@ from utils import to_grayscale, convolve_gaussian_2d, get_gaussian_kernel
 from argparse import RawTextHelpFormatter
 
 class SSIMImage(object):
+    """SSIMImage 
+    Parameters:
+      img: Image or file name
+      gaussian_kernel_1d
+      size: new images size
+
+    Attributes:
+      img: PIL original Image.
+      img_gray: grayscale Image.
+      img_gray_squared: squared img_gray
+      img_gray_mu: img_gray convolved with gaussian kernel
+      img_gray_mu_squared: squared img_gray_mu
+      img_gray_sigma_squared: img_gray convolved with gaussian kernel - img_gray_mu_squared
+
+    """
     def __init__(self, img, gaussian_kernel_1d, size = None):
         self.gaussian_kernel_1d = gaussian_kernel_1d
         if isinstance(img, basestring):
@@ -28,6 +43,13 @@ class SSIMImage(object):
         self.img_gray_sigma_squared -= self.img_gray_mu_squared
 
 class SSIM(object):
+    """
+    SSIM: the class comupute SSIM between two images 
+    Parameters:
+      img1: reference image
+      gaussian_kernel_1d
+      l, k_1, k_2
+    """
     def __init__(self, img1, gaussian_kernel_1d, l =255, k_1 =0.01, k_2 = 0.03):
         #set k1,k2 & c1,c2 to depend on L (width of color map)
         self.c_1 = (k_1 * l) ** 2
@@ -36,6 +58,13 @@ class SSIM(object):
         self.img1 = SSIMImage(img1, gaussian_kernel_1d)
 
     def ssim_value(self, img2):
+        """
+        The function return SSIM value from the reference image and the 
+            input image
+        Parameters:
+          img2: input image 
+          return: SSIM float value
+        """
         self.img2 = SSIMImage(img2, self.gaussian_kernel_1d,self.img1.size)
         self.img_mat_12 = self.img1.img_gray * self.img2.img_gray
         self.img_mat_sigma_12 = convolve_gaussian_2d(self.img_mat_12, self.gaussian_kernel_1d)
@@ -77,5 +106,6 @@ def main():
 
         except Exception, e:
             print e
+
 if __name__ == '__main__':
     main()
