@@ -4,14 +4,19 @@ virtualenv:
   system_site_packages: true
 
 python:
-  - 2.6
   - 2.7
+  - 3.2
+  - 3.3
 
 before_install:
- - sudo apt-get install -qq python-numpy python-scipy
+ - sudo apt-get install -qq python-numpy python-scipy python3-numpy python3-scipy
 
 install:
   - pip install -r requirements.txt
+  - pip install pylint
   - python setup.py install
 
 script: pyssim test-images/test1-1.png test-images/test1-2.png
+script: pyssim test-images/test1-1.png "test-images/*"
+script: pylint --rcfile=.pylintrc setup.py
+script: pylint --rcfile=.pylintrc ssim
