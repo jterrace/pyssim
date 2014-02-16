@@ -32,7 +32,7 @@ setup(
     url = "https://github.com/jterrace/pyssim",
     entry_points = {
         'console_scripts':[
-            'pyssim = ssim.__main__:main'
+            'pyssim = ssim.ssim:main'
         ]
     },
     packages = find_packages()
