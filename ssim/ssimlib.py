@@ -4,10 +4,11 @@ from __future__ import absolute_import
 
 import argparse
 import glob
+import sys
 
 import numpy
 
-from ssim.compat import Image
+from ssim import compat
 from ssim.utils import convolve_gaussian_2d
 from ssim.utils import get_gaussian_kernel
 from ssim.utils import to_grayscale
@@ -35,8 +36,8 @@ class SSIMImage(object):
         """
         self.gaussian_kernel_1d = gaussian_kernel_1d
         self.img = img
-        if isinstance(img, basestring):
-            self.img = Image.open(img)
+        if isinstance(img, compat.basestring):
+            self.img = compat.Image.open(img)
         if size:
             self.img = self.img.resize(size)
         self.size = self.img.size
@@ -127,10 +128,11 @@ def main():
         ssim_value = SSIM(args.base_image.name, gaussian_kernel_1d).ssim_value(
             comparison_image)
         if is_a_single_image:
-            print ssim_value
+            sys.stdout.write('%.7g' % ssim_value)
         else:
-            print '%s - %s: %s' % (
-                args.base_image.name, comparison_image, ssim_value)
+            sys.stdout.write('%s - %s: %.7g' % (
+                args.base_image.name, comparison_image, ssim_value))
+        sys.stdout.write('\n')
 
 if __name__ == '__main__':
     main()

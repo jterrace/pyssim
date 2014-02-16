@@ -25,7 +25,7 @@ def get_gaussian_kernel(gaussian_kernel_width=11, gaussian_kernel_sigma=1.5):
     norm_mu = int(gaussian_kernel_width / 2)
 
     # Fill Gaussian kernel
-    for i in xrange(gaussian_kernel_width):
+    for i in range(gaussian_kernel_width):
         gaussian_kernel_1d[i] = (
             (1 / (sqrt(2 * pi) * (gaussian_kernel_sigma))) *
             exp(-(((i - norm_mu) ** 2)) / (2 * (gaussian_kernel_sigma ** 2))))
