@@ -1,6 +1,11 @@
 # pyssim
 
-This module implements the Structural Similarity Image Metric (SSIM). Original code written by Antoine Vacavant from http://isit.u-clermont1.fr/~anvacava/code.html, with modifications by Christopher Godfrey and Jeff Terrace.
+This module implements the Structural Similarity Image Metric (SSIM).
+Original code written by Antoine Vacavant from
+http://isit.u-clermont1.fr/~anvacava/code.html, with modifications by
+Christopher Godfrey and Jeff Terrace.
+
+[![Build Status](https://secure.travis-ci.org/jterrace/pyssim.png)](http://travis-ci.org/#!/jterrace/pyssim)
 
 ## Installation
 
@@ -9,16 +14,43 @@ This module implements the Structural Similarity Image Metric (SSIM). Original c
 ## Running
 
     $ pyssim --help
-    usage: pyssim [-h] image1.png image2.png
+    usage: pyssim [-h] image1.png image path with* or image2.png
 
-    Compares two images using the SSIM metric
+    Compares an image with a list of images using the SSIM metric.
+      Example:
+        pyssim test-images/test1-1.png "test-images/*"
 
     positional arguments:
       image1.png
-      image2.png
+      image path with* or image2.png
 
     optional arguments:
-      -h, --help  show this help message and exit
+      -h, --help            show this help message and exit
+
+## Compatibility
+
+pyssim is known to work with Python 2.7 and 3.2 and we test these versions on
+Travis CI to make sure they keep working. 2.6 and 3.3 will probably work, but
+we omit them from testing due to complications with setting them up on Travis
+CI.
+
+## Development
+
+To run from a local git client:
+
+    PYTHONPATH="." python ssim
+
+To run the lint checks:
+
+    pylint --rcfile=.pylintrc -r n ssim setup.py
+
+To test:
+
+    $ PYTHONPATH="." python ssim test-images/test1-1.png "test-images/*"
+    test-images/test1-1.png - test-images/test1-1.png: 1
+    test-images/test1-1.png - test-images/test1-2.png: 0.9981071
+    test-images/test1-1.png - test-images/test2-1.png: 0.67301
+    test-images/test1-1.png - test-images/test2-2.png: 0.6488112
 
 ## References
 

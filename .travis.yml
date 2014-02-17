@@ -1,0 +1,23 @@
+language: python
+
+virtualenv:
+  system_site_packages: true
+
+python:
+  - 2.7
+  - 3.2
+
+before_install:
+ - sudo apt-get install -qq python-numpy python-scipy python3-numpy python3-scipy
+
+install:
+  - pip install -r requirements.txt
+  - pip install pylint
+  - python setup.py install
+
+script:
+ - pyssim test-images/test1-1.png test-images/test1-1.png | grep 1
+ - pyssim test-images/test1-1.png test-images/test1-2.png | grep 0.998
+ - pyssim test-images/test1-1.png "test-images/*" | grep -E " 1| 0.998| 0.673| 0.648" | wc -l | grep 4
+ - pylint --rcfile=.pylintrc setup.py
+ - pylint --rcfile=.pylintrc ssim

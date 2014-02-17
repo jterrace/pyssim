@@ -1,39 +1,50 @@
-from setuptools import find_packages, setup
+"""Setup script for pyssim."""
 
-install_requires = []
+from setuptools import find_packages
+from setuptools import setup
 
-try: import matplotlib
-except ImportError: install_requires.append('matplotlib')
+install_requires = []  # pylint: disable=invalid-name
 
-try: import PIL
+# pylint: disable=import-error
+# pylint: disable=unused-import
+try:
+    import PIL
 except ImportError:
-    try: import Image
+    try:
+        import Image
     except ImportError:
         install_requires.append('pillow')
 
-try: import numpy
-except ImportError: install_requires.append('numpy')
+try:
+    import numpy
+except ImportError:
+    install_requires.append('numpy')
 
-try: import scipy
-except ImportError: install_requires.append('scipy')
+try:
+    import scipy
+except ImportError:
+    install_requires.append('scipy')
 
-try: import argparse
-except ImportError: install_requires.append('argparse')
+try:
+    import argparse
+except ImportError:
+    install_requires.append('argparse')
 
 setup(
-    name = "pyssim",
-    version = "0.1",
-    description = "Module for computing Structured Similarity Image Metric (SSIM) in Python",
-    author = "Antoine Vacavant, Christopher Godfrey, Jeff Terrace",
-    author_email = 'jterrace@gmail.com',
-    platforms=["any"],
-    license="BSD",
+    name='pyssim',
+    version='0.2',
+    description=('Module for computing Structured Similarity Image Metric '
+                 '(SSIM) in Python'),
+    author='Antoine Vacavant, Christopher Godfrey, Jeff Terrace',
+    author_email='jterrace@gmail.com',
+    platforms=['any'],
+    license='BSD',
     install_requires=install_requires,
-    url = "https://github.com/jterrace/pyssim",
-    entry_points = {
-        'console_scripts':[
-            'pyssim = ssim.ssim:main'
+    url='https://github.com/jterrace/pyssim',
+    entry_points={
+        'console_scripts': [
+            'pyssim = ssim.__main__:main'
         ]
     },
-    packages = find_packages()
+    packages=find_packages()
 )
