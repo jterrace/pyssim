@@ -38,7 +38,7 @@ class SSIMImage(object):
         self.img = img
         if isinstance(img, compat.basestring):
             self.img = compat.Image.open(img)
-        if size:
+        if size and size != self.img.size:
             self.img = self.img.resize(size)
         self.size = self.img.size
         self.img_gray, self.img_alpha = to_grayscale(self.img)
