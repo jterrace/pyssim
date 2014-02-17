@@ -6,7 +6,6 @@ virtualenv:
 python:
   - 2.7
   - 3.2
-  - 3.3
 
 before_install:
  - sudo apt-get install -qq python-numpy python-scipy python3-numpy python3-scipy
@@ -17,7 +16,8 @@ install:
   - python setup.py install
 
 script:
- - pyssim test-images/test1-1.png test-images/test1-2.png
- - pyssim test-images/test1-1.png "test-images/*"
+ - pyssim test-images/test1-1.png test-images/test1-1.png | grep 1
+ - pyssim test-images/test1-1.png test-images/test1-2.png | grep 0.998
+ - pyssim test-images/test1-1.png "test-images/*" | grep -E ": 1|: 0.998|: 0.673|: 0.648" | wc -l | grep 5
  - pylint --rcfile=.pylintrc setup.py
  - pylint --rcfile=.pylintrc ssim
