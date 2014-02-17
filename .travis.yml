@@ -18,6 +18,6 @@ install:
 script:
  - pyssim test-images/test1-1.png test-images/test1-1.png | grep 1
  - pyssim test-images/test1-1.png test-images/test1-2.png | grep 0.998
- - pyssim test-images/test1-1.png "test-images/*" | grep -E ": 1|: 0.998|: 0.673|: 0.648" | wc -l | grep 5
+ - pyssim test-images/test1-1.png "test-images/*" | grep -E " 1| 0.998| 0.673| 0.648" | wc -l | grep 4
  - pylint --rcfile=.pylintrc setup.py
  - pylint --rcfile=.pylintrc ssim
