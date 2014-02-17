@@ -4,3 +4,4 @@
 * Christopher Godfrey
 * Jeff Terrace, jterrace@gmail.com
 * Wieland Morgenstern
+* Gabriele Lami, koteth@gmail.com 
