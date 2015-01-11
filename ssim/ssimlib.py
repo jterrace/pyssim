@@ -78,7 +78,11 @@ class SSIM(object):
         Returns:
           Computed SSIM float value.
         """
-        img2 = SSIMImage(img2, self.gaussian_kernel_1d, self.img1.size)
+        # Performance boost if handed a compatible SSIMImage object.
+        if not isinstance(img2, SSIMImage) \
+          or not (self.gaussian_kernel_1d == img2.gaussian_kernel_1d).all():
+            img2 = SSIMImage(img2, self.gaussian_kernel_1d, self.img1.size)
+
         img_mat_12 = self.img1.img_gray * img2.img_gray
         img_mat_sigma_12 = convolve_gaussian_2d(
             img_mat_12, self.gaussian_kernel_1d)
