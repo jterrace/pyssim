@@ -82,7 +82,7 @@ class SSIM(object):
         """
         # Performance boost if handed a compatible SSIMImage object.
         if not isinstance(target, SSIMImage) \
-          or not np.array_equal(self.gaussian_kernel_1d, target.gaussian_kernel_1d):
+          or not numpy.array_equal(self.gaussian_kernel_1d, target.gaussian_kernel_1d):
             target = SSIMImage(target, self.gaussian_kernel_1d, self.img1.size)
 
         img_mat_12 = self.img1.img_gray * target.img_gray
