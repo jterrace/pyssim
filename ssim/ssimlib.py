@@ -69,24 +69,26 @@ class SSIM(object):
         self.gaussian_kernel_1d = gaussian_kernel_1d
         self.img1 = SSIMImage(img1, gaussian_kernel_1d)
 
-    def ssim_value(self, img2):
-        """Compute the SSIM value from the reference image to the given image.
+    def ssim_value(self, target):
+        """Compute the SSIM value from the reference image to the target image.
 
         Args:
-          img2: Input image to compare the reference image to.
+          target: Input image to compare the reference image to. This may be a
+          PIL Image object or, to save time, an SSIMImage object (e.g. the img1
+          member of another SSIM object).
 
         Returns:
           Computed SSIM float value.
         """
         # Performance boost if handed a compatible SSIMImage object.
-        if not isinstance(img2, SSIMImage) \
-          or not (self.gaussian_kernel_1d == img2.gaussian_kernel_1d).all():
-            img2 = SSIMImage(img2, self.gaussian_kernel_1d, self.img1.size)
+        if not isinstance(target, SSIMImage) \
+          or not np.array_equal(self.gaussian_kernel_1d, target.gaussian_kernel_1d):
+            target = SSIMImage(target, self.gaussian_kernel_1d, self.img1.size)
 
-        img_mat_12 = self.img1.img_gray * img2.img_gray
+        img_mat_12 = self.img1.img_gray * target.img_gray
         img_mat_sigma_12 = convolve_gaussian_2d(
             img_mat_12, self.gaussian_kernel_1d)
-        img_mat_mu_12 = self.img1.img_gray_mu * img2.img_gray_mu
+        img_mat_mu_12 = self.img1.img_gray_mu * target.img_gray_mu
         img_mat_sigma_12 = img_mat_sigma_12 - img_mat_mu_12
 
         # Numerator of SSIM
@@ -95,10 +97,10 @@ class SSIM(object):
 
         # Denominator of SSIM
         den_ssim = (
-            (self.img1.img_gray_mu_squared + img2.img_gray_mu_squared +
+            (self.img1.img_gray_mu_squared + target.img_gray_mu_squared +
              self.c_1) *
             (self.img1.img_gray_sigma_squared +
-             img2.img_gray_sigma_squared + self.c_2))
+             target.img_gray_sigma_squared + self.c_2))
 
         ssim_map = num_ssim / den_ssim
         index = numpy.average(ssim_map)
