@@ -6,3 +6,4 @@
 * Wieland Morgenstern
 * Gabriele Lami, koteth@gmail.com 
 * Martin McGreal, CTY, martin@cty.io, http://cty.io
+* Christoph Koerner, office@chaosmail.at
