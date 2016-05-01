@@ -26,6 +26,7 @@ try:
 except ImportError:
     install_requires.append('scipy')
 
+# pylint: disable=wrong-import-order
 try:
     import argparse
 except ImportError:
