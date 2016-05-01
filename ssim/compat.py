@@ -4,18 +4,23 @@ from __future__ import absolute_import
 
 import sys
 
-try:
-    import Image  # pylint: disable=import-error,unused-import
-except ImportError:
-    from PIL import Image  # pylint: disable=unused-import
+# pylint: disable=import-error
+# pylint: disable=invalid-name
+# pylint: disable=redefined-builtin
+# pylint: disable=redefined-variable-type
+# pylint: disable=unused-import
 
 try:
-    import ImageOps  # pylint: disable=import-error,unused-import
+    import Image
 except ImportError:
-    from PIL import ImageOps  # pylint: disable=unused-import
+    from PIL import Image
+
+try:
+    import ImageOps
+except ImportError:
+    from PIL import ImageOps
 
 if sys.version_info[0] > 2:
-    basestring = (str, bytes)  # pylint: disable=redefined-builtin,invalid-name
+    basestring = (str, bytes)
 else:
-    # pylint: disable=redefined-variable-type
-    basestring = basestring  # pylint: disable=invalid-name
+    basestring = basestring
