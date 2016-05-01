@@ -5,7 +5,6 @@ from setuptools import setup
 
 install_requires = []  # pylint: disable=invalid-name
 
-# pylint: disable=bad-option-value
 # pylint: disable=import-error
 # pylint: disable=unused-import
 # pylint: disable=wrong-import-order
