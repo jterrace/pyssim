@@ -51,9 +51,9 @@ To test:
 
     $ PYTHONPATH="." python ssim test-images/test1-1.png "test-images/*"
     test-images/test1-1.png - test-images/test1-1.png: 1
-    test-images/test1-1.png - test-images/test1-2.png: 0.9981071
-    test-images/test1-1.png - test-images/test2-1.png: 0.67301
-    test-images/test1-1.png - test-images/test2-2.png: 0.6488112
+    test-images/test1-1.png - test-images/test1-2.png: 0.9980119
+    test-images/test1-1.png - test-images/test2-1.png: 0.6726952
+    test-images/test1-1.png - test-images/test2-2.png: 0.6485879
 
 ## References
 
