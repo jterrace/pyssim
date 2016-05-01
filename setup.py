@@ -5,8 +5,10 @@ from setuptools import setup
 
 install_requires = []  # pylint: disable=invalid-name
 
+# pylint: disable=bad-option-value
 # pylint: disable=import-error
 # pylint: disable=unused-import
+# pylint: disable=wrong-import-order
 # pylint: disable=wrong-import-position
 try:
     import PIL
@@ -26,7 +28,6 @@ try:
 except ImportError:
     install_requires.append('scipy')
 
-# pylint: disable=wrong-import-order
 try:
     import argparse
 except ImportError:
