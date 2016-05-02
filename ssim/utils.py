@@ -4,9 +4,7 @@ from __future__ import absolute_import
 
 import numpy
 from numpy.ma.core import exp
-from numpy.ma.core import sqrt
 import scipy.ndimage
-from scipy.constants.constants import pi
 
 from ssim.compat import ImageOps
 
@@ -26,10 +24,9 @@ def get_gaussian_kernel(gaussian_kernel_width=11, gaussian_kernel_sigma=1.5):
 
     # Fill Gaussian kernel
     for i in range(gaussian_kernel_width):
-        gaussian_kernel_1d[i] = (
-            (1 / (sqrt(2 * pi) * (gaussian_kernel_sigma))) *
-            exp(-(((i - norm_mu) ** 2)) / (2 * (gaussian_kernel_sigma ** 2))))
-    return gaussian_kernel_1d
+        gaussian_kernel_1d[i] = (exp(-(((i - norm_mu) ** 2)) /
+                                     (2 * (gaussian_kernel_sigma ** 2))))
+    return gaussian_kernel_1d / numpy.sum(gaussian_kernel_1d)
 
 def to_grayscale(img):
     """Convert PIL image to numpy grayscale array and numpy alpha array.
