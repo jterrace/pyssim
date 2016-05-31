@@ -40,7 +40,7 @@ setup(
     author='Antoine Vacavant, Christopher Godfrey, Jeff Terrace',
     author_email='jterrace@gmail.com',
     platforms=['any'],
-    license='BSD',
+    license='MIT License',
     install_requires=install_requires,
     url='https://github.com/jterrace/pyssim',
     entry_points={
