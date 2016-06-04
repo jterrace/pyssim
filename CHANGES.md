@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3
+
+- Drop support for Python 3.2, add support for 3.4 and 3.5.
+- Now licensed under MIT.
+- Normalize gaussian kernel to fix issue #9.
+- Added support for CW-SSIM algorithm.
+
 ## 0.2
 
 - Library now works on Python 3.2.

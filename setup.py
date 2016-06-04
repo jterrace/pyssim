@@ -34,7 +34,7 @@ except ImportError:
 
 setup(
     name='pyssim',
-    version='0.2',
+    version='0.3',
     description=('Module for computing Structured Similarity Image Metric '
                  '(SSIM) in Python'),
     author='Antoine Vacavant, Christopher Godfrey, Jeff Terrace',
