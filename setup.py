@@ -5,7 +5,7 @@ from setuptools import setup
 
 setup(
     name='pyssim',
-    version='0.3',
+    version='0.4',
     description=('Module for computing Structured Similarity Image Metric '
                  '(SSIM) in Python'),
     author='Antoine Vacavant, Christopher Godfrey, Jeff Terrace',

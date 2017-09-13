@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4
+
+- Packaging fixes.
+
 ## 0.3
 
 - Drop support for Python 3.2, add support for 3.4 and 3.5.
