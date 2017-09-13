@@ -5,7 +5,7 @@ Original code written by Antoine Vacavant from
 http://isit.u-clermont1.fr/~anvacava/code.html, with modifications by
 Christopher Godfrey and Jeff Terrace.
 
-[![Build Status](https://secure.travis-ci.org/jterrace/pyssim.png)](http://travis-ci.org/#!/jterrace/pyssim)
+[![Build Status](https://travis-ci.org/jterrace/pyssim.svg?branch=master)](https://travis-ci.org/jterrace/pyssim)
 
 ## Installation
 
