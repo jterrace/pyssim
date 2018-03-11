@@ -7,7 +7,7 @@ import sys
 # pylint: disable=import-error
 # pylint: disable=invalid-name
 # pylint: disable=redefined-builtin
-# pylint: disable=redefined-variable-type
+# pylint: disable=ungrouped-imports
 # pylint: disable=unused-import
 
 try:
