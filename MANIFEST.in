@@ -1,0 +1,4 @@
+include LICENSE.md README.md CHANGES.md AUTHORS.md
+include SSIM_CW-SSIM_comparison.ipynb
+graft test-images
+recursive-include tests *.py
