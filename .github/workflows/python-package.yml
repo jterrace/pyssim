@@ -32,8 +32,8 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Test with pytest
       run: |
-        pyssim test-images/test1-1.png test-images/test1-1.png | grep 1
-        pyssim test-images/test1-1.png test-images/test1-2.png | grep 0.998
-        pyssim test-images/test1-1.png "test-images/*" | grep -E " 1| 0.998| 0.672| 0.648" | wc -l | grep 4
-        pyssim --cw --width 128 --height 128 test-images/test1-1.png test-images/test1-1.png | grep 1
-        pyssim --cw --width 128 --height 128 test-images/test3-orig.jpg test-images/test3-rot.jpg | grep 0.938
+        PYTHONPATH="." python ssim test-images/test1-1.png test-images/test1-1.png | grep 1
+        PYTHONPATH="." python ssim test-images/test1-1.png test-images/test1-2.png | grep 0.998
+        PYTHONPATH="." python ssim test-images/test1-1.png "test-images/*" | grep -E " 1| 0.998| 0.672| 0.648" | wc -l | grep 4
+        PYTHONPATH="." python ssim --cw --width 128 --height 128 test-images/test1-1.png test-images/test1-1.png | grep 1
+        PYTHONPATH="." python ssim --cw --width 128 --height 128 test-images/test3-orig.jpg test-images/test3-rot.jpg | grep 0.938
