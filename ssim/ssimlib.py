@@ -45,7 +45,7 @@ class SSIMImage(object):
         # Resize image if size is defined and different
         # from original image
         if size and size != self.img.size:
-            self.img = self.img.resize(size, Image.ANTIALIAS)
+            self.img = self.img.resize(size, Image.LANCZOS)
 
         # Set the size of the image
         self.size = self.img.size
