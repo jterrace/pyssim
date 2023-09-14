@@ -16,7 +16,7 @@ def compute_ssim(image1, image2, gaussian_kernel_sigma=1.5,
       im2: Second PIL Image object to compare.
 
     Returns:
-      SSIM float value.
+      SSIM float value, in the range (-1, 1).
     """
     gaussian_kernel_1d = get_gaussian_kernel(
         gaussian_kernel_width, gaussian_kernel_sigma)
