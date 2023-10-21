@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.7
+
+* Drop Python 3.7 support.
+* Add Python 3.12 support.
+* Update support for newer versions of PIL/Pillow.
+
 ## 0.6
 
 * Update supported python versions to 3.7 through 3.11.
