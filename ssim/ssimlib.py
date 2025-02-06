@@ -7,7 +7,7 @@ import glob
 import sys
 
 import numpy as np
-from scipy import signal
+import pywt
 
 from ssim import compat
 from ssim.compat import Image, ImageOps
@@ -168,8 +168,8 @@ class SSIM(object):
         sig2 = np.asarray(target.img_gray.getdata())
 
         # Convolution
-        cwtmatr1 = signal.cwt(sig1, signal.ricker, widths)
-        cwtmatr2 = signal.cwt(sig2, signal.ricker, widths)
+        cwtmatr1, freqs1 = pywt.cwt(sig1, widths, 'mexh')
+        cwtmatr2, freqs2 = pywt.cwt(sig2, widths, 'mexh')
 
         # Compute the first term
         c1c2 = np.multiply(abs(cwtmatr1), abs(cwtmatr2))
