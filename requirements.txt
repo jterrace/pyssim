@@ -2,3 +2,4 @@ pillow
 numpy
 scipy
 argparse
+PyWavelets

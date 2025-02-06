@@ -12,7 +12,7 @@ setup(
     author_email='jterrace@gmail.com',
     platforms=['any'],
     license='MIT License',
-    install_requires=['numpy', 'pillow', 'scipy'],
+    install_requires=['numpy', 'pillow', 'scipy', 'PyWavelets'],
     url='https://github.com/jterrace/pyssim',
     entry_points={
         'console_scripts': [
