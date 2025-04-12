@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.7.1
+
+* Fix compatibility with new version of scipy.
+* Update supported python versions to 3.9 through 3.13.
+
 ## 0.7
 
 * Drop Python 3.7 support.

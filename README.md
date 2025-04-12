@@ -32,8 +32,7 @@ Christopher Godfrey and Jeff Terrace.
 
 ## Compatibility
 
-pyssim is known to work with Python 2.7, 3.4 and 3.5 and we test these versions
-on Travis CI to make sure they keep working.
+pyssim is known to work with Python 3.9 to 3.13.
 
 ## Development
 
